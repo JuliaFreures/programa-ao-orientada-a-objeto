@@ -156,8 +156,157 @@ except ValueError:
          
 
 #Exercicio 9
+def par(num):
+     return "Par" if num % 2 == 0 else "Ímpar" 
 
-                       
+def fatorial(num):
+    if num < 0:
+         return "Número inválido"
+    
+    resultado = 1
+    while num > 1:
+         resultado *= num
+         num -= 1
+    return resultado
+while True:
+    print("Escolha uma opção:")
+    print("1 - Verificar se o número é par")
+    print("2 - Calcular fatorial")
+    print("3 - Sair")
+    
+    try:
+        opcao = int(input("Digite uma das opções: "))
+    except ValueError:
+        print("Valor inválido")
+        continue
+       
+    if opcao == 1:
+        try:
+            num = int(input("Digite um número inteiro: "))
+            print(f"{num} é {par(num)}")
+        except ValueError:
+            print("Valor inválido")
+
+    elif opcao == 2:
+        try:
+            num = int(input("Digite um número inteiro: "))
+            print(f"{num}! = {fatorial(num)}")
+        except ValueError:
+            print("Valor inválido")
+
+    elif opcao == 3:
+        print("Saindo...")
+        break  
+
+    else:
+        print("Opção inválida! Escolha 1, 2 ou 3.")
+
+#Exercicio 10
+numeros = []  # Lista global para armazenar os números inseridos
+
+def adicionar_numero():
+    while True:
+        try:
+            num = int(input("Digite um número inteiro positivo: "))
+            if num > 0:
+                numeros.append(num)
+                print(f"Número {num} adicionado com sucesso!")
+                break
+            else:
+                print("Número inválido! Digite um número positivo maior que zero.")
+        except ValueError:
+            print("Valor inválido! Digite um número inteiro.")
+
+def exibir_estatisticas():
+    if not numeros:
+        print("Nenhum número foi inserido ainda.")
+        return
+
+    total_numeros = len(numeros)
+    soma_total = sum(numeros)
+    media = soma_total / total_numeros
+    maior = max(numeros)
+    menor = min(numeros)
+
+    print("\n===== Estatísticas =====")
+    print(f"Quantidade de números: {total_numeros}")
+    print(f"Soma total: {soma_total}")
+    print(f"Média: {media:.2f}")
+    print(f"Maior número: {maior}")
+    print(f"Menor número: {menor}")
+    print("========================")
+
+def verificar_paridade_multiplos():
+    if not numeros:
+        print("Nenhum número foi inserido ainda.")
+        return
+
+    print("\n===== Paridade e Múltiplos =====")
+    for num in numeros:
+        paridade = "Par" if num % 2 == 0 else "Ímpar"
+        multiplos = []
+        if num % 3 == 0:
+            multiplos.append("múltiplo de 3")
+        if num % 5 == 0:
+            multiplos.append("múltiplo de 5")
+        
+        descricao = f"Número {num}: {paridade}"
+        if multiplos:
+            descricao += ", " + " e ".join(multiplos)
+        
+        print(descricao)
+    print("=================================")
+
+def contagem_regressiva():
+    if not numeros:
+        print("Nenhum número foi inserido")
+        return
+
+    ultimo_numero = numeros[-1]
+    if ultimo_numero > 0 and ultimo_numero % 2 == 0:
+        print(f"\nContagem regressiva a partir de {ultimo_numero}:")
+        while ultimo_numero >= 0:
+            print(ultimo_numero, end=" ")
+            ultimo_numero -= 2
+        print("\nContagem finalizada!")
+    else:
+        print("Não é possível executar a contagem com este valor")
+
+def menu():
+    while True:
+        print("\n====== MENU PRINCIPAL ======")
+        print("[1] Adicionar número à lista")
+        print("[2] Exibir estatísticas")
+        print("[3] Verificar paridade e múltiplos")
+        print("[4] Mostrar contagem regressiva do último número")
+        print("[5] Sair")
+        
+        try:
+            opcao = int(input("Escolha uma opção: "))
+        except ValueError:
+            print("Opção inválida! Digite um número entre 1 e 5.")
+            continue
+
+        if opcao == 1:
+            adicionar_numero()
+        elif opcao == 2:
+            exibir_estatisticas()
+        elif opcao == 3:
+            verificar_paridade_multiplos()
+        elif opcao == 4:
+            contagem_regressiva()
+        elif opcao == 5:
+            print("Encerrando o programa... Até logo!")
+            break
+        else:
+            print("Opção inválida! Escolha um número entre 1 e 5.")
+
+
+menu()
+       
+            
+
+
                     
 
 
