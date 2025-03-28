@@ -202,7 +202,7 @@ while True:
         print("Opção inválida! Escolha 1, 2 ou 3.")
 
 #Exercicio 10
-numeros = []  # Lista global para armazenar os números inseridos
+numeros = [] 
 
 def adicionar_numero():
     while True:
@@ -303,21 +303,3 @@ def menu():
 
 
 menu()
-       
-            
-
-
-                    
-
-
-
-    
-        
-     
-    
-    
-    
-      
-
-      
-      
